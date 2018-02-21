@@ -14,8 +14,9 @@ source:
   {{ hash_type }}: {{ hash }}
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
   entry_points:
     - unittest2pytest = unittest2pytest.__main__:main
 
@@ -26,7 +27,7 @@ requirements:
   run:
     - python
 
-test:  
+test:
   commands:
     - unittest2pytest --help
 
