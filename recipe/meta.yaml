@@ -1,7 +1,7 @@
 {% set name = "unittest2pytest" %}
-{% set version = "0.3" %}
+{% set version = "0.4" %}
 {% set hash_type = "sha256" %}
-{% set hash = "8194beef58f906e312ef40401590ca0ca7b428e535a7d22855b9a64ba19a9eab" %}
+{% set hash = "a909522aa54787e20c1cabda9624bf81edcfe5107dc3c73a478ad2d0cf67c21f" %}
 {% set ext = "tar.gz" %}
 
 package:
@@ -14,7 +14,7 @@ source:
   {{ hash_type }}: {{ hash }}
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
   noarch: python
   entry_points:
