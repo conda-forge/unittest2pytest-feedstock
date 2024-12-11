@@ -14,7 +14,7 @@ source:
 
 build:
   number: 0
-  script: script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
   entry_points:
     - unittest2pytest = unittest2pytest.__main__:main
