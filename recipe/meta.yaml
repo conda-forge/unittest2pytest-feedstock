@@ -1,7 +1,6 @@
 {% set name = "unittest2pytest" %}
-{% set version = "0.4" %}
-{% set hash_type = "sha256" %}
-{% set hash = "a909522aa54787e20c1cabda9624bf81edcfe5107dc3c73a478ad2d0cf67c21f" %}
+{% set version = "0.5" %}
+{% set hash = "245db168f4286470ffc932b8d055cd0062ff26dfe2c8138ba8cc93672bb520f4" %}
 {% set ext = "tar.gz" %}
 
 package:
@@ -10,30 +9,33 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.{{ ext }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ ext }}
-  {{ hash_type }}: {{ hash }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ ext }}
+  sha256: {{ hash }}
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
   entry_points:
     - unittest2pytest = unittest2pytest.__main__:main
 
 requirements:
-  build:
-    - python
+  host:
+    - python {{ python_min }}
     - setuptools
+    - pip
   run:
-    - python
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - unittest2pytest --help
 
 about:
   home: https://github.com/pytest-dev/unittest2pytest
-  license: GPL-3.0
+  license: AGPL-3.0-only
   license_file: COPYING-GPLv3.txt
   summary: unittest2pytest is a tool that helps rewriting Python unittest test-cases into pytest test-cases.
 
