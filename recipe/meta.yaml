@@ -5,7 +5,7 @@
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   fn: {{ name }}-{{ version }}.{{ ext }}
@@ -26,6 +26,7 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
+    - fissix
 
 test:
   requires:
