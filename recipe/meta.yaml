@@ -1,15 +1,15 @@
 {% set name = "unittest2pytest" %}
-{% set version = "0.5" %}
-{% set hash = "245db168f4286470ffc932b8d055cd0062ff26dfe2c8138ba8cc93672bb520f4" %}
+{% set version = "0.6" %}
+{% set hash = "3db99de0e807923e16cbf58533bdbef7ff414fedf9bbfd5866dbf230534038e7" %}
 {% set ext = "tar.gz" %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   fn: {{ name }}-{{ version }}.{{ ext }}
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ ext }}
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ ext }}
   sha256: {{ hash }}
 
 build:
@@ -26,6 +26,7 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
+    - fissix
 
 test:
   requires:
